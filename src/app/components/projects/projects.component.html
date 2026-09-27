@@ -1,0 +1,80 @@
+<section id="projects" class="px-5 sm:px-8 py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section heading -->
+    <div class="flex items-center gap-4 mb-6 scroll-reveal-left" appScrollReveal>
+      <span class="section-kicker">03 — Work</span>
+      <div class="gold-rule flex-1"></div>
+    </div>
+
+    <h2 class="font-display text-4xl sm:text-5xl font-bold mb-14 scroll-reveal-left" appScrollReveal>
+      Selected work.
+    </h2>
+
+    <!-- Projects -->
+    <div class="grid md:grid-cols-2 gap-5">
+
+      <article *ngFor="let project of projects; let i = index" appScrollReveal [class.scroll-reveal-left]="i % 2 === 0"
+        [class.scroll-reveal-right]="i % 2 !== 0" [style.transition-delay.ms]="i * 120" class="card-frame project-card"
+        [class.md:col-span-2]="project.featured" [class.featured-project]="project.featured">
+
+        <!-- Project content -->
+        <div class="project-content">
+
+          <div class="flex items-start justify-between gap-4 mb-4">
+            <h3 class="font-display text-2xl sm:text-3xl font-bold">
+              {{ project.name }}
+            </h3>
+
+            <span *ngIf="project.featured" class="chip text-gold border-gold/30 shrink-0">
+              Featured
+            </span>
+          </div>
+
+          <p class="text-mute leading-relaxed mb-4 max-w-2xl">
+            {{ project.description }}
+          </p>
+
+          <p class="font-mono text-xs text-gold mb-6">
+            {{ project.role }}
+          </p>
+
+          <!-- Technologies -->
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span *ngFor="let t of project.tech" class="chip">
+              {{ t }}
+            </span>
+          </div>
+
+          <!-- Links -->
+          <div class="mt-auto flex flex-wrap gap-5 text-sm">
+
+            <a *ngIf="project.link" [href]="project.link" target="_blank" rel="noopener"
+              class="text-gold hover:text-flare transition-colors">
+              Live ↗
+            </a>
+
+            <a *ngIf="project.repo" [href]="project.repo" target="_blank" rel="noopener"
+              class="text-gold hover:text-flare transition-colors">
+              Source ↗
+            </a>
+
+            <a *ngFor="let extra of project.links" [href]="extra.url" target="_blank" rel="noopener"
+              class="text-gold hover:text-flare transition-colors">
+              {{ extra.label }} ↗
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Project image -->
+        <div class="project-image">
+          <img [src]="project.image" [alt]="project.name + ' preview'" />
+        </div>
+
+      </article>
+
+    </div>
+  </div>
+</section>

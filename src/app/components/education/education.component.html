@@ -1,0 +1,76 @@
+<section id="education" class="path-section">
+  <div class="path-container">
+
+    <div class="skills-header">
+      <span class="section-label">04 — Path</span>
+      <h2>Education & <span>Experience</span></h2>
+    </div>
+
+    <!-- EDUCATION: zigzag timeline -->
+    <div class="path-category">
+      <div class="category-header">
+        <div class="category-line"></div>
+        <h3>Education</h3>
+      </div>
+
+      <div class="timeline">
+        <div *ngFor="let ed of education; let i = index" appScrollReveal [class.timeline-left]="i % 2 === 0"
+          [class.timeline-right]="i % 2 !== 0" class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <p *ngIf="ed.level" class="path-level">{{ ed.level }}</p>
+            <p class="path-title">{{ ed.school }}</p>
+            <p *ngIf="ed.credential" class="path-sub">{{ ed.credential }}</p>
+            <p class="path-period">{{ ed.period }}</p>
+            <p *ngIf="ed.note" class="path-note">{{ ed.note }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE: centered stacked blocks -->
+    <!-- EXPERIENCE: zigzag timeline (same as education) -->
+    <div class="path-category">
+      <div class="category-header">
+        <div class="category-line"></div>
+        <h3>Experience</h3>
+      </div>
+
+      <div class="timeline">
+        <div *ngFor="let job of experience; let i = index" appScrollReveal [class.timeline-left]="i % 2 === 0"
+          [class.timeline-right]="i % 2 !== 0" class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-content">
+            <p class="path-title">{{ job.role }}</p>
+            <p class="path-sub">{{ job.org }}</p>
+            <p class="path-period">{{ job.period }}</p>
+            <ul class="path-bullets">
+              <li *ngFor="let bullet of job.bullets">
+                <span class="bullet-dot">▸</span>{{ bullet }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div *ngIf="achievements.length" class="path-category">
+      <div class="category-header">
+        <div class="category-line"></div>
+        <h3>Highlights</h3>
+      </div>
+
+      <div appScrollReveal class="scroll-reveal-left path-item">
+        <ul class="path-achievements">
+          <li *ngFor="let item of achievements">
+            <span class="bullet-dot">—</span>{{ item }}
+          </li>
+        </ul>
+        <img [src]="awardImage" alt="Certificate of Recognition: UI/UX Designer of the Year, Aces Tagum College, Inc."
+          class="award-image" />
+      </div>
+    </div>
+
+  </div>
+</section>

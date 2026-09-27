@@ -1,0 +1,77 @@
+<div class="resume-toolbar print:hidden px-5 sm:px-8 py-4 flex items-center justify-between max-w-4xl mx-auto">
+  <a routerLink="/" class="text-sm text-mute hover:text-gold transition-colors">← Back to portfolio</a>
+  <button type="button" class="btn-gold !py-2 !px-4 text-sm" (click)="print()">Download PDF</button>
+</div>
+
+<article class="resume-sheet max-w-4xl mx-auto bg-[#111318] border border-line rounded-2xl px-8 sm:px-12 py-10 mb-16 print:border-0 print:rounded-none print:bg-white print:text-black print:max-w-none print:m-0 print:p-0">
+  <header class="flex flex-col sm:flex-row gap-6 items-start border-b border-line pb-6 mb-6 print:border-black/20">
+    <img
+      [src]="profile.photo"
+      [alt]="profile.name"
+      class="w-24 h-24 object-cover object-top rounded-xl border border-gold/30 print:border-black/20"
+    />
+    <div class="flex-1">
+      <h1 class="font-display text-3xl sm:text-4xl font-extrabold">{{ profile.name }}</h1>
+      <p class="text-gold mt-1 print:text-black print:font-semibold">{{ profile.role }}</p>
+      <p class="text-mute text-sm mt-2 print:text-neutral-700">{{ profile.location }}</p>
+      <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm mt-3">
+        <a [href]="'mailto:' + profile.email" class="text-cream/90 hover:text-gold print:text-black">{{ profile.email }}</a>
+        <a [href]="profile.github" target="_blank" rel="noopener" class="text-cream/90 hover:text-gold print:text-black">github.com/nuyadjobert</a>
+        <a [href]="profile.facebook" target="_blank" rel="noopener" class="text-cream/90 hover:text-gold print:text-black">Facebook</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="mb-7">
+    <h2 class="section-kicker mb-2 print:text-black print:tracking-widest">Summary</h2>
+    <p class="text-cream/85 leading-relaxed print:text-neutral-800">{{ profile.bio }}</p>
+  </section>
+
+  <section class="mb-7">
+    <h2 class="section-kicker mb-3 print:text-black print:tracking-widest">Experience</h2>
+    <div *ngFor="let job of experience" class="mb-5">
+      <div class="flex flex-wrap justify-between gap-2">
+        <p class="font-display font-bold">{{ job.role }}</p>
+        <p class="font-mono text-xs text-gold print:text-neutral-600">{{ job.period }}</p>
+      </div>
+      <p class="text-mute text-sm print:text-neutral-700">{{ job.org }}</p>
+      <ul class="mt-2 space-y-1 text-sm text-cream/80 print:text-neutral-800">
+        <li *ngFor="let bullet of job.bullets">• {{ bullet }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-7">
+    <h2 class="section-kicker mb-3 print:text-black print:tracking-widest">Selected work</h2>
+    <div *ngFor="let project of projects" class="mb-4">
+      <p class="font-display font-bold">{{ project.name }}</p>
+      <p class="text-sm text-mute print:text-neutral-700">{{ project.role }}</p>
+      <p class="text-sm text-cream/80 mt-1 print:text-neutral-800">{{ project.description }}</p>
+      <p class="text-xs font-mono text-gold mt-1 print:text-neutral-600">{{ project.tech.join(' · ') }}</p>
+    </div>
+  </section>
+
+  <section class="mb-7">
+    <h2 class="section-kicker mb-3 print:text-black print:tracking-widest">Education</h2>
+    <div *ngFor="let ed of education">
+      <p class="font-display font-bold">{{ ed.school }}</p>
+      <p class="text-sm text-cream/85 print:text-neutral-800">{{ ed.credential }}</p>
+      <p class="font-mono text-xs text-gold mt-1 print:text-neutral-600">{{ ed.period }}</p>
+    </div>
+  </section>
+
+  <section class="mb-7">
+    <h2 class="section-kicker mb-3 print:text-black print:tracking-widest">Skills</h2>
+    <div *ngFor="let group of groups" class="text-sm mb-1">
+      <span class="text-gold print:font-semibold print:text-black">{{ group[0] }}:</span>
+      <span class="text-cream/85 print:text-neutral-800"> {{ group[1].join(', ') }}</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-kicker mb-3 print:text-black print:tracking-widest">Highlights</h2>
+    <ul class="text-sm text-cream/85 space-y-1 print:text-neutral-800">
+      <li *ngFor="let item of achievements">• {{ item }}</li>
+    </ul>
+  </section>
+</article>

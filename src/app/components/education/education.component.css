@@ -1,0 +1,427 @@
+/* =========================
+   COLOR SYSTEM
+========================= */
+
+:host {
+  --bg: #0a0a0a;
+  --card: #0b0b0b;
+
+  --text-primary: #f2e9d8;
+  --text-secondary: #a99f8e;
+  --text-muted: #666158;
+
+  --accent: #c9a86a;
+  --accent-light: #dbc28f;
+
+  --border: #1f1f1f;
+  --border-hover: #38342d;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.path-section {
+  width: 100%;
+  padding: 100px 20px;
+
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.path-container {
+  width: 100%;
+  max-width: 700px;
+
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.skills-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 4px;
+
+  color: var(--text-muted);
+}
+
+.skills-header h2 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 600;
+
+  letter-spacing: -1px;
+}
+
+.skills-header h2 span {
+  color: var(--accent);
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.path-category {
+  margin-bottom: 65px;
+}
+
+.path-category:last-child {
+  margin-bottom: 0;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  margin-bottom: 40px;
+}
+
+.category-line {
+  width: 25px;
+  height: 1px;
+
+  background: var(--accent);
+}
+
+.category-header h3 {
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================
+   SHARED TEXT STYLES
+========================= */
+
+.path-level {
+  margin-bottom: 6px;
+
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  color: var(--accent);
+}
+
+.path-title {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  color: var(--text-primary);
+}
+
+.path-sub {
+  margin-top: 6px;
+
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.path-period {
+  margin-top: 10px;
+
+  font-size: 11px;
+  font-family: monospace;
+  letter-spacing: 1px;
+
+  color: var(--accent);
+}
+
+.path-note {
+  max-width: 420px;
+  margin: 10px auto 0;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: var(--text-muted);
+}
+
+.bullet-dot {
+  color: var(--accent);
+}
+
+
+/* =========================
+   EXPERIENCE LIST (centered blocks)
+========================= */
+
+.path-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 40px;
+}
+
+.path-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.path-bullets {
+  margin-top: 14px;
+
+  display: inline-block;
+  text-align: left;
+
+  list-style: none;
+  padding: 0;
+}
+
+.path-bullets li {
+  display: flex;
+  gap: 8px;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+  line-height: 1.6;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+.path-achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.path-achievements li {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  font-size: 16px;
+
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.award-image {
+  width: 100%;
+  max-width: 380px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  object-fit: cover;
+}
+
+
+/* =========================
+   TIMELINE (zigzag, centered line)
+========================= */
+
+.timeline {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-hover);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 50px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-left {
+  left: 0;
+  padding-right: 40px;
+  text-align: right;
+}
+
+.timeline-right {
+  left: 50%;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--bg);
+
+  z-index: 1;
+}
+
+.timeline-left .timeline-dot {
+  right: -6px;
+}
+
+.timeline-right .timeline-dot {
+  left: -6px;
+}
+
+.timeline-content {
+  display: inline-block;
+}
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.scroll-reveal-left,
+.scroll-reveal-right,
+.timeline-left,
+.timeline-right {
+  opacity: 0;
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.scroll-reveal-left {
+  transform: translateX(-80px);
+}
+
+.scroll-reveal-right {
+  transform: translateX(80px);
+}
+
+.timeline-left {
+  transform: translateX(-60px);
+}
+
+.timeline-right {
+  transform: translateX(60px);
+}
+
+.scroll-reveal-left.scroll-visible,
+.scroll-reveal-right.scroll-visible,
+.timeline-left.scroll-visible,
+.timeline-right.scroll-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* =========================
+   STAGGER DELAY
+========================= */
+
+.path-item:nth-child(1),
+.timeline-item:nth-child(1) { transition-delay: 0.05s; }
+
+.path-item:nth-child(2),
+.timeline-item:nth-child(2) { transition-delay: 0.15s; }
+
+.path-item:nth-child(3),
+.timeline-item:nth-child(3) { transition-delay: 0.25s; }
+
+.path-item:nth-child(4),
+.timeline-item:nth-child(4) { transition-delay: 0.35s; }
+
+.path-item:nth-child(5),
+.timeline-item:nth-child(5) { transition-delay: 0.45s; }
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .path-section {
+    padding: 70px 16px;
+  }
+
+  .path-category {
+    margin-bottom: 45px;
+  }
+
+  .path-list {
+    gap: 30px;
+  }
+
+  .scroll-reveal-left,
+  .scroll-reveal-right {
+    transform: translateY(40px);
+  }
+
+  .timeline::before {
+    left: 6px;
+    transform: none;
+  }
+
+  .timeline-item,
+  .timeline-left,
+  .timeline-right {
+    width: 100%;
+    left: 0;
+    padding-left: 28px;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .timeline-left .timeline-dot,
+  .timeline-right .timeline-dot {
+    left: 0;
+    right: auto;
+  }
+
+  .timeline-left,
+  .timeline-right {
+    transform: translateY(30px);
+  }
+}

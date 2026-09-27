@@ -1,0 +1,47 @@
+<section id="hero" class="relative min-h-[100svh] px-5 sm:px-8 pt-32 pb-20">
+  <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-7">
+      <div class="flex flex-wrap items-center gap-3 mb-7 reveal">
+        <span class="inline-flex items-center gap-2 chip">
+          <span class="pulse-dot"></span>
+          Available for opportunities
+        </span>
+        <span class="chip">{{ profile.location }}</span>
+      </div>
+
+      <p class="section-kicker mb-5 reveal reveal-d1">{{ profile.role }}</p>
+
+      <h1 class="font-display font-extrabold leading-[0.92] tracking-tight mb-7">
+        <span class="block text-6xl sm:text-7xl lg:text-8xl reveal reveal-d2">{{ first }}</span>
+        <span class="block text-5xl sm:text-6xl lg:text-7xl name-stroke mt-1 reveal reveal-d3">{{ rest }}</span>
+      </h1>
+
+      <p class="text-xl sm:text-2xl text-cream/90 max-w-2xl font-light leading-snug mb-4 reveal reveal-d4">
+        {{ profile.tagline }}
+      </p>
+      <p class="text-mute max-w-xl leading-relaxed mb-10 reveal reveal-d4">
+        {{ profile.bio }}
+      </p>
+
+      <div class="flex flex-wrap gap-3 reveal reveal-d5">
+        <a href="#projects" class="btn-gold">View selected work →</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+        <a routerLink="/resume" class="btn-ghost">View résumé</a>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-5 reveal reveal-d3">
+      <figure class="portrait-frame">
+        <img [src]="profile.photo" [alt]="'Professional portrait of ' + profile.name" class="portrait-resolve"
+          width="640" height="800" />
+
+      </figure>
+    </aside>
+  </div>
+
+  <a href="#about"
+    class="scroll-cue absolute bottom-8 left-5 sm:left-8 inline-flex items-center gap-3 text-mute text-sm">
+    <span class="block w-px h-10 bg-gold/50"></span>
+    Scroll
+  </a>
+</section>

@@ -1,0 +1,20 @@
+<section id="contact" class="px-5 sm:px-8 py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto card-frame px-8 py-16 sm:px-16 sm:py-20 text-center">
+    <p class="section-kicker mb-6 relative z-10">05 — Contact</p>
+    <h2 class="font-display text-4xl sm:text-6xl font-bold relative z-10 mb-6">
+      Let’s build something<br class="hidden sm:block" /> worth shipping.
+    </h2>
+    <p class="text-mute max-w-lg mx-auto relative z-10 mb-4">
+      Open to front-end and full-stack roles, internships, and collaborations.
+    </p>
+    <a [href]="'mailto:' + profile.email" class="relative z-10 inline-block text-gold mb-10">
+      {{ profile.email }}
+    </a>
+    <div class="relative z-10 flex flex-wrap justify-center gap-3">
+      <a [href]="'mailto:' + profile.email" class="btn-gold">Email me</a>
+      <a [href]="profile.github" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
+      <a [href]="profile.facebook" target="_blank" rel="noopener" class="btn-ghost">Facebook</a>
+      <a routerLink="/resume" class="btn-ghost">Résumé</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mx: 50%;
+  --my: 30%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: #07080c;
+  color: #f3ead8;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(212, 180, 131, 0.35);
+  color: #f3ead8;
+}
+
+:focus-visible {
+  outline: 2px solid #d4b483;
+  outline-offset: 3px;
+}
+
+.site-glow {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(720px 480px at var(--mx) var(--my), rgba(212, 180, 131, 0.14), transparent 55%),
+    radial-gradient(900px 500px at 85% -10%, rgba(143, 180, 196, 0.1), transparent 50%),
+    radial-gradient(700px 400px at -10% 80%, rgba(212, 180, 131, 0.06), transparent 50%);
+}
+
+.site-noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.site-content {
+  position: relative;
+  z-index: 2;
+}
+
+.section-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d4b483;
+}
+
+.gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, #d4b483, transparent);
+}
+
+.chip {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: #f3ead8;
+  border: 1px solid rgba(232, 220, 196, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+}
+
+.card-frame {
+  position: relative;
+  border: 1px solid rgba(232, 220, 196, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.card-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212, 180, 131, 0.16), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.card-frame:hover::before {
+  opacity: 1;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #d4b483;
+  color: #07080c;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.8rem 1.35rem;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: #f0d4a4;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(232, 220, 196, 0.22);
+  color: #f3ead8;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.8rem 1.35rem;
+  border-radius: 999px;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: #d4b483;
+  color: #d4b483;
+  background: rgba(212, 180, 131, 0.06);
+}
+
+.reveal {
+  animation: rise 0.9s ease both;
+}
+
+.reveal-d1 { animation-delay: 0.08s; }
+.reveal-d2 { animation-delay: 0.16s; }
+.reveal-d3 { animation-delay: 0.24s; }
+.reveal-d4 { animation-delay: 0.34s; }
+.reveal-d5 { animation-delay: 0.46s; }
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #7dce9a;
+  box-shadow: 0 0 0 0 rgba(125, 206, 154, 0.55);
+  animation: ping 2s infinite;
+}
+
+@keyframes ping {
+  70% {
+    box-shadow: 0 0 0 8px rgba(125, 206, 154, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(125, 206, 154, 0);
+  }
+}
+
+.scroll-cue {
+  animation: bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+.name-stroke {
+  -webkit-text-stroke: 1px rgba(243, 234, 216, 0.28);
+  color: transparent;
+}
+
+.portrait-frame {
+  position: relative;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  border: 1px solid rgba(212, 180, 131, 0.28);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(212, 180, 131, 0.08);
+  background: #101218;
+  aspect-ratio: 4 / 5;
+}
+
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 62%, rgba(7, 8, 12, 0.55));
+  z-index: 2;
+}
+
+.portrait-resolve {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  display: block;
+  animation: resolve-photo 2.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.portrait-caption {
+  position: absolute;
+  left: 1.1rem;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@keyframes resolve-photo {
+  0% {
+    filter: blur(28px) grayscale(1) contrast(0.7) brightness(1.15);
+    transform: scale(1.12);
+  }
+  40% {
+    filter: blur(12px) grayscale(0.55) contrast(0.85) brightness(1.05);
+    transform: scale(1.05);
+  }
+  70% {
+    filter: blur(4px) grayscale(0.15) contrast(0.95);
+    transform: scale(1.015);
+  }
+  100% {
+    filter: blur(0) grayscale(0) contrast(1) brightness(1);
+    transform: scale(1);
+  }
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: #f3ead8;
+  border: 1px solid rgba(232, 220, 196, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+}
+
+.skill-chip i {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.skill-chip .devicon-github-original {
+  color: #f3ead8;
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+  .site-glow,
+  .site-noise {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0.9rem 1.4rem;
+  border-radius: 1rem; /* rounded box, not full pill */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  min-width: 140px;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-3px);
+  border-color: rgba(212, 175, 55, 0.4); /* adjust to your gold accent */
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.skill-box-icon {
+  position: absolute;
+  right: -0.4rem;
+  bottom: -0.6rem;
+  font-size: 3.2rem;   /* big, sits behind the text */
+  opacity: 0.16;       /* faded, watermark-style */
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(-8deg);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.skill-box:hover .skill-box-icon {
+  opacity: 0.28;
+  transform: rotate(0deg) scale(1.05);
+}
+
+.skill-box-label {
+  position: relative;
+  z-index: 10;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #f4f1ea; /* swap for your cream/text color */
+}
+
+/* ========================================
+   GLOBAL SCROLL REVEAL
+======================================== */
+
+.scroll-reveal-left,
+.scroll-reveal-right {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Start from LEFT */
+
+.scroll-reveal-left {
+  transform: translateX(-80px);
+}
+
+
+/* Start from RIGHT */
+
+.scroll-reveal-right {
+  transform: translateX(80px);
+}
+
+
+/* When visible */
+
+.scroll-reveal-left.scroll-visible,
+.scroll-reveal-right.scroll-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
