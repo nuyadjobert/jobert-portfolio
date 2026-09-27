@@ -8,6 +8,7 @@ import { PROFILE } from '../../data/portfolio-data';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './hero.component.html',
+  styleUrl: './hero.component.css'
 })
 export class HeroComponent implements OnInit, OnDestroy {
 
@@ -17,11 +18,8 @@ export class HeroComponent implements OnInit, OnDestroy {
   // NAME
   // =========================
 
-  firstName = '';
-  restName = '';
-
-  private fullFirstName = PROFILE.name.split(' ')[0];
-  private fullRestName = PROFILE.name.split(' ').slice(1).join(' ');
+  firstName = PROFILE.name.split(' ')[0];
+  restName = PROFILE.name.split(' ').slice(1).join(' ');
 
 
   // =========================
@@ -40,7 +38,7 @@ export class HeroComponent implements OnInit, OnDestroy {
 
 
   // =========================
-  // TIMERS
+  // TIMER
   // =========================
 
   private typingInterval?: ReturnType<typeof setInterval>;
@@ -53,7 +51,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   // =========================
 
   ngOnInit(): void {
-    this.startTyping();
+    this.startTypingRole();
   }
 
 
@@ -67,75 +65,33 @@ export class HeroComponent implements OnInit, OnDestroy {
 
 
   // =========================
-  // TYPING
+  // TYPE ROLE
   // =========================
 
-  private startTyping(): void {
+  private startTypingRole(): void {
 
     this.clearTimers();
 
-    this.firstName = '';
-    this.restName = '';
     this.currentRole = '';
 
     const role = this.roles[this.roleIndex];
 
-    let firstIndex = 0;
-    let restIndex = 0;
-    let roleIndex = 0;
+    let index = 0;
 
     this.typingInterval = setInterval(() => {
 
-      // -------------------------
-      // TYPE FIRST NAME
-      // -------------------------
+      if (index < role.length) {
 
-      if (firstIndex < this.fullFirstName.length) {
+        this.currentRole += role[index];
+        index++;
 
-        this.firstName += this.fullFirstName[firstIndex];
-        firstIndex++;
-
-      }
-
-      // -------------------------
-      // TYPE REST OF NAME
-      // -------------------------
-
-      else if (restIndex < this.fullRestName.length) {
-
-        this.restName += this.fullRestName[restIndex];
-        restIndex++;
-
-      }
-
-
-      // -------------------------
-      // TYPE ROLE
-      // -------------------------
-
-      if (roleIndex < role.length) {
-
-        this.currentRole += role[roleIndex];
-        roleIndex++;
-
-      }
-
-
-      // -------------------------
-      // EVERYTHING FINISHED
-      // -------------------------
-
-      if (
-        firstIndex >= this.fullFirstName.length &&
-        restIndex >= this.fullRestName.length &&
-        roleIndex >= role.length
-      ) {
+      } else {
 
         clearInterval(this.typingInterval);
 
         // Pause before deleting
         this.cycleTimeout = setTimeout(() => {
-          this.startDeleting();
+          this.startDeletingRole();
         }, 2000);
       }
 
@@ -144,56 +100,20 @@ export class HeroComponent implements OnInit, OnDestroy {
 
 
   // =========================
-  // DELETING
+  // DELETE ROLE
   // =========================
 
-  private startDeleting(): void {
+  private startDeletingRole(): void {
 
     this.clearIntervals();
 
     this.deletingInterval = setInterval(() => {
 
-      // -------------------------
-      // DELETE REST OF NAME
-      // -------------------------
-
-      if (this.restName.length > 0) {
-
-        this.restName = this.restName.slice(0, -1);
-
-      }
-
-      // -------------------------
-      // DELETE FIRST NAME
-      // -------------------------
-
-      else if (this.firstName.length > 0) {
-
-        this.firstName = this.firstName.slice(0, -1);
-
-      }
-
-
-      // -------------------------
-      // DELETE ROLE
-      // -------------------------
-
       if (this.currentRole.length > 0) {
 
         this.currentRole = this.currentRole.slice(0, -1);
 
-      }
-
-
-      // -------------------------
-      // EVERYTHING DELETED
-      // -------------------------
-
-      if (
-        this.firstName.length === 0 &&
-        this.restName.length === 0 &&
-        this.currentRole.length === 0
-      ) {
+      } else {
 
         clearInterval(this.deletingInterval);
 
@@ -203,7 +123,7 @@ export class HeroComponent implements OnInit, OnDestroy {
 
         // Small pause before typing again
         this.cycleTimeout = setTimeout(() => {
-          this.startTyping();
+          this.startTypingRole();
         }, 500);
       }
 

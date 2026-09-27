@@ -29,10 +29,13 @@ export class SkillsComponent {
     // Frontend
     Angular: 'devicon-angularjs-plain',
     Flutter: 'devicon-flutter-plain',
+    'Tailwind CSS': 'devicon-tailwindcss-original',
+    Bootstrap: 'devicon-bootstrap-plain',
 
     // Backend
     Laravel: 'devicon-laravel-original',
     MySQL: 'devicon-mysql-plain',
+    ' MVC Architecture': 'mvc-icon',
 
     // Tools
     'VS Code': 'devicon-vscode-plain',

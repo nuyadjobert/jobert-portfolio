@@ -3,16 +3,22 @@ export interface ProjectLink {
   url: string;
 }
 
+export interface ProjectTech {
+  name: string;
+  icon: string;
+}
+
 export interface Project {
   name: string;
   image?: string;
   description: string;
   role: string;
-  tech: string[];
+  tech: ProjectTech[];
   link?: string;
   repo?: string;
   links?: ProjectLink[];
   featured?: boolean;
+  icon?: string;
 }
 
 export interface ExperienceItem {
@@ -76,12 +82,16 @@ export const SKILLS = {
   Frontend: [
     'Angular',
     'Flutter',
+    'Tailwind CSS',
+    'Bootstrap',
+
   ],
 
   Backend: [
     'Laravel',
     'REST API',
     'MySQL',
+    'MVC Architecture',
   ],
 
   Tools: [
@@ -99,7 +109,20 @@ export const PROJECTS: Project[] = [
     description:
       'Capstone image detector that helps identify cacao plant diseases from photos — built so farmers and researchers can get a faster first read in the field.',
     role: 'Front-end developer · Capstone team',
-    tech: ['Flutter', 'Dart', 'UI/UX'],
+    tech: [
+      {
+        name: 'Flutter',
+        icon: 'devicon-flutter-plain',
+      },
+      {
+        name: 'Dart',
+        icon: 'devicon-dart-plain',
+      },
+      {
+        name: 'UI/UX',
+        icon: 'devicon-figma-plain',
+      },
+    ],
     repo: 'https://github.com/nuyadjobert/TheobroTect',
     featured: true,
   },
@@ -110,13 +133,34 @@ export const PROJECTS: Project[] = [
       'Registrar workflow for campus records: a dedicated front-end for staff-facing screens, paired with a PHP module that handles the registrar logic.',
     role: 'Front-end & module developer',
     tech: [
-      'Tailwind CSS',
-      'TypeScript',
-      'Angular',
-      'Laravel',
-      'PHP',
-      'REST API',
-      'MySQL',
+      {
+        name: 'Tailwind CSS',
+        icon: 'devicon-tailwindcss-original',
+      },
+      {
+        name: 'TypeScript',
+        icon: 'devicon-typescript-plain',
+      },
+      {
+        name: 'Angular',
+        icon: 'devicon-angular-plain',
+      },
+      {
+        name: 'Laravel',
+        icon: 'devicon-laravel-original',
+      },
+      {
+        name: 'PHP',
+        icon: 'devicon-php-plain',
+      },
+      {
+        name: 'REST API',
+        icon: 'devicon-nodejs-plain',
+      },
+      {
+        name: 'MySQL',
+        icon: 'devicon-mysql-original',
+      },
     ],
     links: [
       {

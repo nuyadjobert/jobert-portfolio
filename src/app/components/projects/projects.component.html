@@ -41,8 +41,9 @@
 
           <!-- Technologies -->
           <div class="flex flex-wrap gap-2 mb-8">
-            <span *ngFor="let t of project.tech" class="chip">
-              {{ t }}
+            <span *ngFor="let t of project.tech" class="chip inline-flex items-center gap-2">
+              <i [class]="t.icon"></i>
+              <span>{{ t.name }}</span>
             </span>
           </div>
 

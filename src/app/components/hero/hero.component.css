@@ -1,0 +1,15 @@
+.profile-image {
+  opacity: 0;
+  animation: profileFadeIn 1.5s ease-out forwards;
+}
+
+@keyframes profileFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
