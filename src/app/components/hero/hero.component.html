@@ -9,11 +9,19 @@
         <span class="chip">{{ profile.location }}</span>
       </div>
 
-      <p class="section-kicker mb-5 reveal reveal-d1">{{ profile.role }}</p>
-
+      <p class="section-kicker mb-5 reveal reveal-d1 role-typewriter">
+        {{ currentRole }}<span class="role-cursor"></span>
+      </p>
       <h1 class="font-display font-extrabold leading-[0.92] tracking-tight mb-7">
-        <span class="block text-6xl sm:text-7xl lg:text-8xl reveal reveal-d2">{{ first }}</span>
-        <span class="block text-5xl sm:text-6xl lg:text-7xl name-stroke mt-1 reveal reveal-d3">{{ rest }}</span>
+
+        <span class="block text-6xl sm:text-7xl lg:text-8xl">
+          {{ firstName }}<span class="typing-cursor"></span>
+        </span>
+
+        <span class="block text-5xl sm:text-6xl lg:text-7xl name-stroke mt-1">
+          {{ restName }}
+        </span>
+
       </h1>
 
       <p class="text-xl sm:text-2xl text-cream/90 max-w-2xl font-light leading-snug mb-4 reveal reveal-d4">
@@ -34,7 +42,6 @@
       <figure class="portrait-frame">
         <img [src]="profile.photo" [alt]="'Professional portrait of ' + profile.name" class="portrait-resolve"
           width="640" height="800" />
-
       </figure>
     </aside>
   </div>

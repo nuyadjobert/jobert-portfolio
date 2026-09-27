@@ -424,4 +424,25 @@
   .timeline-right {
     transform: translateY(30px);
   }
+
+  .category-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  gap: 14px;
+
+  margin-bottom: 40px;
+}
+
+.toggle-icon {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--accent);
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon.open {
+  transform: rotate(180deg);
+}
 }

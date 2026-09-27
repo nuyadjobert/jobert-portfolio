@@ -31,14 +31,15 @@ export interface EducationItem {
 }
 
 export const PROFILE = {
-  name: 'Jobert Padillo Noyad',
-  role: 'Front-End Developer · Full-Stack',
+  name: 'Noyad Jobert',
+  role: 'Front-End Developer · Full-Stack Developer · UI/UX Designer',
   location: 'Tagum City, Davao del Norte, Philippines',
-  tagline: 'I build interfaces first, then wire up everything behind them.',
+  tagline: 'I turn ideas into interfaces — then make sure everything underneath actually works.',
   bio:
-    'Fourth-year BSIT student at Aces Tagum College, Inc. and a front-end–focused full-stack developer. ' +
-    'I design and ship web and mobile experiences with Angular, TypeScript, and Flutter — from the interface ' +
-    'down to the database — and recently led the front end of TheobroTect, a cacao disease detector.',
+    'BSIT student at Aces Tagum College, Inc., and a front-end–focused full-stack developer. ' +
+    'I care most about how an interface feels to use — the layout, the flow, the small details that make ' +
+    'something intuitive — and I make sure everything behind it holds up just as well. That balance, ' +
+    'crafting the experience first and building the structure to support it, is what drives how I approach every project.',
   email: 'jobertnoyad93@gmail.com',
   github: 'https://github.com/nuyadjobert',
   facebook: 'https://www.facebook.com/jobert.nuyad',
@@ -48,15 +49,15 @@ export const PROFILE = {
 export const JOURNEY = [
   {
     label: 'Started',
-    text: 'Began as a BSIT student at Aces Tagum College, curious about how apps are actually built under the interface.',
+    text: 'Curious about what makes an app feel right to use — not just how it looks, but how it responds.',
   },
   {
     label: 'Building',
-    text: 'Picked up Angular and TypeScript for the web, then Flutter with Dart and Kotlin for mobile — plus PHP and MySQL on the server.',
+    text: 'Learned by building for both web and mobile, always starting from how something should feel before worrying about how it works underneath.',
   },
   {
     label: 'Now',
-    text: 'Specializing in front-end development while shipping full-stack work: capstone, registrar tools, and UI that people can actually use.',
+    text: 'Specializing in front-end craft while still owning full-stack work — focused on shipping interfaces that people actually find easy to use.',
   },
 ];
 
@@ -127,7 +128,7 @@ export const PROJECTS: Project[] = [
         url: 'https://github.com/nuyadjobert/Registrar_module1',
       },
     ],
-        featured: true,
+    featured: true,
 
   },
 ];

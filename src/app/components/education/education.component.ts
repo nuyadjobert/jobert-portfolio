@@ -16,4 +16,10 @@ export class EducationComponent {
   achievements = ACHIEVEMENTS;
   experience = EXPERIENCE;
   awardImage = AWARD_IMAGE;
+
+  showAchievements = false;
+
+  toggleAchievements(): void {
+    this.showAchievements = !this.showAchievements;
+  }
 }

@@ -1,6 +1,35 @@
-<footer class="px-5 sm:px-8 pb-10">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3 pt-6 border-t border-line text-xs text-mute font-mono">
-    <span>© {{ year }} {{ profile.name }}</span>
-    <span>Angular · TypeScript · Tailwind</span>
+<footer class="px-5 sm:px-8 pb-10 pt-16">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8 pb-8 border-b border-line">
+
+      <div>
+        <a href="javascript:void(0)" (click)="scrollToTop()" class="font-display font-bold text-cream text-lg">
+          NOYAD JOBERT<span class="text-gold">.</span>
+        </a>
+        <p class="text-mute text-sm mt-2 max-w-xs">
+          {{ profile.tagline }}
+        </p>
+      </div>
+
+      <div class="flex items-center gap-5">
+        <a [href]="profile.github" target="_blank" rel="noopener" class="text-mute hover:text-gold transition-colors">
+          <i class="devicon-github-original text-xl"></i>
+        </a>
+        <a [href]="profile.facebook" target="_blank" rel="noopener" class="text-mute hover:text-gold transition-colors">
+          <i class="fa-brands fa-facebook text-xl"></i>
+        </a>
+        <a [href]="'mailto:' + profile.email" class="text-mute hover:text-gold transition-colors text-sm font-mono">
+          {{ profile.email }}
+        </a>
+      </div>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-6 text-xs text-mute font-mono">
+      <span>© {{ year }} {{ profile.name }}</span>
+      <span>Angular · TypeScript · Tailwind</span>
+    </div>
+
   </div>
 </footer>

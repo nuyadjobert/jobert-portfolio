@@ -1,14 +1,17 @@
-<section id="skills" class="skills-section">
+<section id="skills" class="px-5 sm:px-8 py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto skills-container">
 
-  <div class="skills-container">
+    <!-- Section heading (identical structure to Journey) -->
+    <div class="flex items-center gap-4 mb-14 scroll-reveal-left" appScrollReveal>
+      <span class="section-kicker">
+        02 — Stack
+      </span>
+
+      <div class="gold-rule flex-1"></div>
+    </div>
 
     <!-- HEADER -->
-
     <div class="skills-header scroll-reveal-left" appScrollReveal>
-
-      <span class="section-label">
-        MY STACK
-      </span>
 
       <h2>
         Skills & <span>Technologies</span>
@@ -28,8 +31,6 @@
 
       <div class="skills-category" *ngFor="let group of groups">
 
-        <!-- CATEGORY TITLE -->
-
         <div class="category-header scroll-reveal-left" appScrollReveal>
 
           <span class="category-line"></span>
@@ -40,29 +41,15 @@
 
         </div>
 
-
-        <!-- SKILLS -->
-
         <div class="skills-grid">
 
           <div class="skill-item" *ngFor="let name of group[1]; let i = index" [class.scroll-reveal-left]="i % 2 === 0"
             [class.scroll-reveal-right]="i % 2 !== 0" appScrollReveal>
 
             <div class="skill-icon">
-
-              <!-- Normal icon -->
-
               <i *ngIf="name !== 'REST API'" [class]="iconFor(name)"></i>
-
-
-              <!-- REST API -->
-
-              <span *ngIf="name === 'REST API'" class="api-icon">
-                API
-              </span>
-
+              <span *ngIf="name === 'REST API'" class="api-icon">API</span>
             </div>
-
 
             <span class="skill-name">
               {{ name }}

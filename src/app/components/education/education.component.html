@@ -1,8 +1,17 @@
-<section id="education" class="path-section">
-  <div class="path-container">
+<section id="education" class="px-5 sm:px-8 py-24 sm:py-32">
+  <div class="max-w-6xl mx-auto path-container">
 
+    <!-- Section heading (identical structure to Journey/Skills) -->
+    <div class="flex items-center gap-4 mb-14 scroll-reveal-left" appScrollReveal>
+      <span class="section-kicker">
+        04 — Path
+      </span>
+
+      <div class="gold-rule flex-1"></div>
+    </div>
+
+    <!-- HEADER -->
     <div class="skills-header">
-      <span class="section-label">04 — Path</span>
       <h2>Education & <span>Experience</span></h2>
     </div>
 
@@ -28,8 +37,7 @@
       </div>
     </div>
 
-    <!-- EXPERIENCE: centered stacked blocks -->
-    <!-- EXPERIENCE: zigzag timeline (same as education) -->
+    <!-- EXPERIENCE: zigzag timeline -->
     <div class="path-category">
       <div class="category-header">
         <div class="category-line"></div>
@@ -56,12 +64,14 @@
 
     <!-- ACHIEVEMENTS -->
     <div *ngIf="achievements.length" class="path-category">
-      <div class="category-header">
+      <div class="category-header" style="cursor: pointer;" (click)="toggleAchievements()">
         <div class="category-line"></div>
         <h3>Highlights</h3>
+        <h5 class="text-xs font-mono text-gold"> View </h5> <span class="toggle-icon"
+          [class.open]="showAchievements">▾</span>
       </div>
 
-      <div appScrollReveal class="scroll-reveal-left path-item">
+      <div *ngIf="showAchievements" appScrollReveal class="scroll-reveal-left path-item">
         <ul class="path-achievements">
           <li *ngFor="let item of achievements">
             <span class="bullet-dot">—</span>{{ item }}

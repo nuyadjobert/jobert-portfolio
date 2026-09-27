@@ -1,48 +1,37 @@
-<header
-  class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
-  [ngClass]="scrolled ? 'bg-void/80 backdrop-blur-md border-b border-line' : ''"
->
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-8 py-4">
-    <a routerLink="/" fragment="hero" class="font-display font-bold tracking-tight text-cream text-lg" (click)="close()">
+<header class="fixed top-0 inset-x-0 z-50 transition-all duration-300"
+  [ngClass]="scrolled ? 'bg-void/80 backdrop-blur-md border-b border-line' : ''">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-4 sm:px-8 py-4 gap-2">
+    <a routerLink="/" fragment="hero" class="font-display font-bold tracking-tight text-cream text-lg flex-shrink-0"
+      (click)="close()">
       JN<span class="text-gold">.</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-8">
-      <a
-        *ngFor="let link of links"
-        href="javascript:void(0)"
-        (click)="scrollTo(link.target)"
-        class="text-sm text-mute hover:text-cream transition-colors flex items-center gap-2"
-      >
+      <a *ngFor="let link of links" href="javascript:void(0)" (click)="scrollTo(link.target)"
+        class="text-sm text-mute hover:text-cream transition-colors flex items-center gap-2">
         <span class="font-mono text-[0.62rem] text-gold/70">{{ link.id }}</span>
         {{ link.label }}
       </a>
     </nav>
 
-    <div class="flex items-center gap-3">
-      <a routerLink="/resume" class="hidden md:inline-flex btn-ghost !py-2 !px-4 text-sm">Résumé</a>
-      <a href="javascript:void(0)" (click)="scrollTo('contact')" class="hidden md:inline-flex btn-gold !py-2 !px-4 text-sm">Let's talk</a>
-      <button
-        type="button"
-        class="md:hidden w-10 h-10 rounded-full border border-line flex items-center justify-center"
-        (click)="toggle()"
-        [attr.aria-expanded]="open"
-        aria-label="Toggle menu"
-      >
+    <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+      <a routerLink="/resume"
+        class="btn-ghost !py-1.5 !px-2.5 sm:!py-2 sm:!px-4 text-xs sm:text-sm whitespace-nowrap">Résumé</a>
+      <a href="javascript:void(0)" (click)="scrollTo('contact')"
+        class="btn-gold !py-1.5 !px-2.5 sm:!py-2 sm:!px-4 text-xs sm:text-sm whitespace-nowrap">Let's talk</a>
+
+      <button type="button"
+        class="md:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-line flex items-center justify-center flex-shrink-0"
+        (click)="toggle()" [attr.aria-expanded]="open" aria-label="Toggle menu">
         <span class="font-mono text-xs text-gold">{{ open ? '✕' : '☰' }}</span>
       </button>
     </div>
   </div>
 
   <div *ngIf="open" class="md:hidden border-t border-line bg-void/95 backdrop-blur-md px-5 py-4 space-y-3">
-    <a
-      *ngFor="let link of links"
-      href="javascript:void(0)"
-      (click)="scrollTo(link.target)"
-      class="block py-2 text-cream"
-    >
+    <a *ngFor="let link of links" href="javascript:void(0)" (click)="scrollTo(link.target)"
+      class="block py-2 text-cream">
       <span class="font-mono text-xs text-gold mr-2">{{ link.id }}</span>{{ link.label }}
     </a>
-    <a routerLink="/resume" class="block py-2 text-gold" (click)="close()">Résumé</a>
   </div>
 </header>

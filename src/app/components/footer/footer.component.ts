@@ -9,4 +9,8 @@ import { PROFILE } from '../../data/portfolio-data';
 export class FooterComponent {
   profile = PROFILE;
   year = new Date().getFullYear();
+
+  scrollToTop(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
