@@ -477,6 +477,16 @@ export const EXPERIENCE: ExperienceItem[] = [
       'Delivered the companion PHP registrar module that powers the server-side process.',
     ],
   },
+    {
+    org: 'Minute Burger Management System · Side-work project',
+    role: 'Full-Stack Developer',
+    period: '2026',
+    bullets: [
+      'Built the Angular front end for shift-based inventory and cash count workflows.',
+      'Developed the Laravel API and MySQL data layer behind inventory carry-over and cash validation.',
+      'Implemented Head Crew review and verification of submitted records.',
+    ],
+  },
 ];
 
 export const EDUCATION: EducationItem[] = [
