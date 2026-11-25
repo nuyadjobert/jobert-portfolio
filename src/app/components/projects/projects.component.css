@@ -19,6 +19,8 @@
   flex: 1;
   min-width: 0;
   padding: 1.5rem;
+   position: relative;   /* add */
+  z-index: 1;    
 }
 
 
@@ -40,6 +42,9 @@
   justify-content: center;
 
   border-top: 1px solid #1f1f1f;
+
+  position: relative;   /* add */
+  z-index: 1; 
 }
 
 .project-image img {
@@ -111,4 +116,140 @@
     height: 390px;
   }
 
+  .no-scrollbar {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* old Edge */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;                /* Chrome, Edge, Safari */
+}
+
+/* ========== POPUP ========== */
+.popup {
+  background: linear-gradient(180deg, #11131b, #0a0b10);
+  border: 1px solid rgba(212, 180, 131, 0.18);
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.03);
+  animation: popup-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes popup-in {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.popup-hero {
+  background:
+    radial-gradient(600px 220px at 15% 0%, rgba(212, 180, 131, 0.16), transparent 70%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 2.5rem;
+}
+
+.popup-close {
+  position: sticky;
+  top: 1rem;
+  float: right;
+  margin: 1rem 1rem 0 0;
+  z-index: 20;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  color: #d4b483;
+  background: rgba(7, 8, 12, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.popup-close:hover { transform: rotate(90deg); border-color: #d4b483; }
+
+/* ========== CAROUSEL ========== */
+.carousel {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 0.5rem 0.25rem 1rem;
+}
+
+.slide {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  margin: 0;
+  border-radius: 1.25rem;
+  background: #0d0f15;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.slide:hover { transform: translateY(-4px); border-color: rgba(212, 180, 131, 0.4); }
+
+.slide-frame { display: block; overflow: hidden; }
+.slide-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top;
+  user-select: none;
+}
+
+/* Phone cards */
+.slide-phone {
+  width: 190px;
+  border-radius: 1.75rem;
+  border: 5px solid #1b1e28;
+}
+.slide-phone .slide-frame { aspect-ratio: 9 / 19; }
+
+/* Web cards */
+.slide-web { width: min(86%, 440px); }
+.slide-web .slide-frame { aspect-ratio: 16 / 10; }
+
+.browser-bar {
+  display: flex;
+  gap: 6px;
+  padding: 0.55rem 0.8rem;
+  background: #151822;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.browser-bar span { width: 8px; height: 8px; border-radius: 50%; background: #343848; }
+.browser-bar span:first-child { background: #d4b483; }
+
+/* Arrows */
+.nav-btn {
+  position: absolute;
+  top: 45%;
+  z-index: 5;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #d4b483;
+  background: rgba(7, 8, 12, 0.8);
+  border: 1px solid rgba(212, 180, 131, 0.3);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.25s ease;
+}
+.group:hover .nav-btn { opacity: 1; }
+.nav-btn:hover { background: rgba(212, 180, 131, 0.2); }
+
+@media (hover: none) {
+  .nav-btn { display: none; } /* touch devices just swipe */
+}
+
+/* Dots */
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+.dot-active { width: 22px; background: #d4b483; }
 }

@@ -8,7 +8,7 @@
 
     <nav class="hidden md:flex items-center gap-8">
       <a *ngFor="let link of links" href="javascript:void(0)" (click)="scrollTo(link.target)"
-        class="text-sm text-mute hover:text-cream transition-colors flex items-center gap-2">
+        class="text-sm text-mute hover:text-gold transition-colors duration-300 flex items-center gap-2">
         <span class="font-mono text-[0.62rem] text-gold/70">{{ link.id }}</span>
         {{ link.label }}
       </a>

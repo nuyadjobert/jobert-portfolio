@@ -1,54 +1,72 @@
-<section id="hero" class="relative min-h-[100svh] px-5 sm:px-8 pt-32 pb-20">
-  <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-12 gap-10 items-center">
-    <div class="lg:col-span-7">
-      <div class="flex flex-wrap items-center gap-3 mb-7 reveal">
-        <span class="inline-flex items-center gap-2 chip">
-          <span class="pulse-dot"></span>
-          Available for opportunities
-        </span>
-        <span class="chip">{{ profile.location }}</span>
-      </div>
+<section id="hero" class="hero" aria-label="Introduction">
+  <div class="hero-decor" aria-hidden="true">
+    <span class="hero-triangle"></span>
+    <span class="hero-ring hero-ring-a"></span>
+    <span class="hero-ring hero-ring-b"></span>
+    <span class="blob blob-a"></span>
+    <span class="blob blob-b"></span>
+    <span class="blob blob-c"></span>
+    <span class="blob blob-d"></span>
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+    <span class="particle p6"></span>
+  </div>
 
-      <p class="section-kicker mb-5 reveal reveal-d1 role-typewriter">
-        {{ currentRole }}<span class="role-cursor"></span>
-      </p>
-      <h1 class="font-display font-extrabold leading-[0.92] tracking-tight mb-7">
+  <div class="hero-inner">
+    <div class="hero-stage">
+      <ul class="hero-dots" aria-hidden="true">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
 
-        <span class="block text-6xl sm:text-7xl lg:text-8xl">
-          {{ firstName }}
-        </span>
-
-        <span class="block text-5xl sm:text-6xl lg:text-7xl name-stroke mt-1">
-          {{ restName }}
-        </span>
-
-      </h1>
-
-      <p class="text-xl sm:text-2xl text-cream/90 max-w-2xl font-light leading-snug mb-4 reveal reveal-d4">
-        {{ profile.tagline }}
-      </p>
-      <p class="text-mute max-w-xl leading-relaxed mb-10 reveal reveal-d4">
-        {{ profile.bio }}
-      </p>
-
-      <div class="flex flex-wrap gap-3 reveal reveal-d5">
-        <a href="#projects" class="btn-gold">View selected work →</a>
-        <a href="#contact" class="btn-ghost">Get in touch</a>
-        <a routerLink="/resume" class="btn-ghost">View résumé</a>
+      <div class="portrait-wrap">
+        <div class="portrait-orb"></div>
+        <div class="portrait-halo"></div>
+        <figure class="portrait-cut">
+          <img
+            [src]="profile.photo"
+            [alt]="'Professional portrait of ' + profile.name"
+            class="portrait-photo"
+            width="640"
+            height="800"
+          />
+        </figure>
+        <span class="hero-index" aria-hidden="true">01</span>
       </div>
     </div>
 
-    <aside class="lg:col-span-5 reveal reveal-d3">
-      <figure class="portrait-frame">
-        <img [src]="profile.photo" [alt]="'Professional portrait of ' + profile.name" class="portrait-resolve"
-          width="640" height="800" />
-      </figure>
-    </aside>
+    <div class="hero-copy">
+      <p class="hero-kicker reveal">
+        {{ profile.location }}
+      </p>
+
+      <h1 class="hero-title">
+        <span class="hero-title-main">app/web</span>
+        <span class="hero-title-sub">Developer</span>
+      </h1>
+
+      <p class="section-kicker hero-role role-typewriter">
+        {{ currentRole }}<span class="role-cursor" aria-hidden="true"></span>
+      </p>
+
+      <p class="hero-intro reveal reveal-d4">
+        {{ profile.tagline }}
+      </p>
+
+      <div class="hero-actions reveal reveal-d5">
+        <a href="#projects" class="btn-gold">Explore My Work</a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
+    </div>
   </div>
 
-  <a href="#about"
-    class="scroll-cue absolute bottom-8 left-5 sm:left-8 inline-flex items-center gap-3 text-mute text-sm">
-    <span class="block w-px h-10 bg-gold/50"></span>
+  <a href="#about" class="scroll-cue hero-scroll">
+    <span class="hero-scroll-line"></span>
     Scroll
   </a>
 </section>

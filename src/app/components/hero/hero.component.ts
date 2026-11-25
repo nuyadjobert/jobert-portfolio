@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { PROFILE } from '../../data/portfolio-data';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
@@ -15,20 +14,13 @@ export class HeroComponent implements OnInit, OnDestroy {
   profile = PROFILE;
 
   // =========================
-  // NAME
-  // =========================
-
-  firstName = PROFILE.name.split(' ')[0];
-  restName = PROFILE.name.split(' ').slice(1).join(' ');
-
-
-  // =========================
   // ROLES
   // =========================
 
   roles = [
-    'FRONT END DEVELOPER',
-    'FULL STACK DEVELOPER',
+    'FRONT-END DEVELOPER',
+    'FULL-STACK DEVELOPER',
+    'APP DEVELOPER',
     'UI/UX DESIGNER'
   ];
 
@@ -51,6 +43,12 @@ export class HeroComponent implements OnInit, OnDestroy {
   // =========================
 
   ngOnInit(): void {
+    if (typeof window !== 'undefined' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.currentRole = this.roles[0];
+      return;
+    }
+
     this.startTypingRole();
   }
 

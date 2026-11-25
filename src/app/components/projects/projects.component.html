@@ -47,26 +47,39 @@
             </span>
           </div>
 
-          <!-- Links -->
+          <!-- Project Actions -->
           <div class="mt-auto flex flex-wrap gap-5 text-sm">
 
-            <a *ngIf="project.link" [href]="project.link" target="_blank" rel="noopener"
+            <!-- View Case Study -->
+            <button type="button" (click)="viewProject(project)" class="text-gold hover:text-flare transition-colors">
+              View Case Study ↗
+            </button>
+
+            <!-- Web Application -->
+            <a *ngIf="project.link" [href]="project.link" target="_blank" rel="noopener noreferrer"
               class="text-gold hover:text-flare transition-colors">
-              Live ↗
+              Visit Website ↗
             </a>
 
-            <a *ngIf="project.repo" [href]="project.repo" target="_blank" rel="noopener"
+            <!-- Android APK -->
+            <a *ngIf="project.apk" [href]="project.apk" target="_blank" rel="noopener noreferrer"
               class="text-gold hover:text-flare transition-colors">
-              Source ↗
+              Download Android APK ↓
             </a>
 
-            <a *ngFor="let extra of project.links" [href]="extra.url" target="_blank" rel="noopener"
+            <!-- GitHub Repository -->
+            <a *ngIf="project.repo" [href]="project.repo" target="_blank" rel="noopener noreferrer"
+              class="text-gold hover:text-flare transition-colors">
+              GitHub Repository ↗
+            </a>
+
+            <!-- Additional Links -->
+            <a *ngFor="let extra of project.links" [href]="extra.url" target="_blank" rel="noopener noreferrer"
               class="text-gold hover:text-flare transition-colors">
               {{ extra.label }} ↗
             </a>
 
           </div>
-
         </div>
 
         <!-- Project image -->
@@ -79,3 +92,110 @@
     </div>
   </div>
 </section>
+<!-- Case Study Popup -->
+<div *ngIf="selectedProject"
+  class="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/80 backdrop-blur-sm"
+  (click)="closeProject()">
+
+  <div class="popup no-scrollbar relative w-full max-w-4xl max-h-[88vh] overflow-y-auto rounded-3xl"
+    (click)="$event.stopPropagation()">
+
+    <!-- Close button -->
+    <button type="button" (click)="closeProject()" aria-label="Close" class="popup-close">✕</button>
+
+
+    <!-- Header -->
+    <div class="popup-hero px-6 sm:px-10 pt-10 pb-8">
+      <span class="chip text-gold border-gold/30 mb-4 inline-block">
+        {{ selectedProject.category }} · {{ selectedProject.year }}
+      </span>
+      <h1 class="font-display text-3xl sm:text-5xl font-bold mb-4">{{ selectedProject.name }}</h1>
+      <p class="text-mute leading-relaxed max-w-2xl">{{ selectedProject.description }}</p>
+      <p class="font-mono text-xs text-gold mt-4">{{ selectedProject.role }}</p>
+    </div>
+
+    <div class="px-6 sm:px-10 pb-10">
+      <!-- keep the rest of your sections here, starting with the Main image -->
+
+      <!-- Main image (smaller) -->
+      <div class="mb-10" *ngIf="selectedProject.image">
+        <img [src]="selectedProject.image" [alt]="selectedProject.name + ' preview'"
+          class="w-full h-48 sm:h-64 object-contain rounded-xl border border-white/10 bg-[#111]">
+      </div>
+
+      <!-- Background -->
+      <div class="mb-10" *ngIf="selectedProject.background">
+        <p class="section-kicker mb-3">01 — Background</p>
+        <h2 class="font-display text-2xl font-bold mb-3">About the system.</h2>
+        <p class="text-mute leading-7">{{ selectedProject.background }}</p>
+      </div>
+
+      <!-- Problem / Solution -->
+      <div class="grid md:grid-cols-2 gap-4 mb-10">
+        <div class="card-frame p-5" *ngIf="selectedProject.problem">
+          <p class="section-kicker mb-3">02 — Problem</p>
+          <h3 class="font-display text-xl font-bold mb-2">The challenge.</h3>
+          <p class="text-mute text-sm leading-6">{{ selectedProject.problem }}</p>
+        </div>
+        <div class="card-frame p-5" *ngIf="selectedProject.solution">
+          <p class="section-kicker mb-3">03 — Solution</p>
+          <h3 class="font-display text-xl font-bold mb-2">Our approach.</h3>
+          <p class="text-mute text-sm leading-6">{{ selectedProject.solution }}</p>
+        </div>
+      </div>
+
+      <!-- Applications -->
+      <!-- Applications -->
+      <div class="mb-12" *ngIf="selectedProject.applications?.length">
+        <p class="section-kicker mb-3">04 — Applications</p>
+        <h2 class="font-display text-2xl font-bold mb-8">Two experiences. One system.</h2>
+
+        <div class="space-y-12">
+          <div *ngFor="let app of selectedProject.applications">
+
+            <div class="flex items-center justify-between gap-4 mb-2">
+              <h3 class="font-display text-xl font-bold">{{ app.name }}</h3>
+              <span class="font-mono text-xs text-gold">
+                {{ (activeSlide[app.name] || 0) + 1 }} / {{ app.images?.length }}
+              </span>
+            </div>
+            <p class="text-mute text-sm leading-6 mb-5">{{ app.description }}</p>
+
+            <!-- Swipeable card stack -->
+            <div class="relative group">
+              <div #track class="carousel no-scrollbar" (scroll)="onSlide($event, app.name)">
+
+                <figure *ngFor="let image of app.images" class="slide" [class.slide-phone]="isMobileApp(app)"
+                  [class.slide-web]="!isMobileApp(app)">
+
+                  <!-- Browser bar for web screenshots -->
+                  <div class="browser-bar" *ngIf="!isMobileApp(app)">
+                    <span></span><span></span><span></span>
+                  </div>
+
+                  <a [href]="image" target="_blank" rel="noopener noreferrer" class="slide-frame">
+                    <img [src]="image" [alt]="app.name + ' screenshot'" loading="lazy" draggable="false" />
+                  </a>
+                </figure>
+
+              </div>
+
+              <!-- Arrows (desktop) -->
+              <button type="button" class="nav-btn left-2" (click)="slide(track, -1)" aria-label="Previous">‹</button>
+              <button type="button" class="nav-btn right-2" (click)="slide(track, 1)" aria-label="Next">›</button>
+            </div>
+
+            <!-- Dots -->
+            <div class="flex justify-center gap-2 mt-4">
+              <button type="button" *ngFor="let image of app.images; let n = index" (click)="goTo(track, n)"
+                aria-label="Go to screenshot" class="dot"
+                [class.dot-active]="(activeSlide[app.name] || 0) === n"></button>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mt-5">
+              <span *ngFor="let tech of app.technologies" class="chip inline-flex items-center gap-2">
+                <i [class]="tech.icon"></i>{{ tech.name }}
+              </span>
+            </div>
+          </div>
+        </div>
